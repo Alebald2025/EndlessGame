@@ -6,8 +6,9 @@ using UnityEngine.Windows;
 
 public class PlayerLaneController : MonoBehaviour {
 
-    public float laneDistance = 2.6f; // Distancia entre carriles
+    public float laneDistance = 2f; // Distancia entre carriles
     public float moveSpeed = 10f;
+
     private int currentLane = 1;
     private Vector3 targetPosition;
 
