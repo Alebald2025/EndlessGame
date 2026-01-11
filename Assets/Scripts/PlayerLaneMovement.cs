@@ -31,10 +31,13 @@ public class PlayerLaneController : MonoBehaviour {
         ); 
     }
     
+    void ChangeLane(int direction) {
+        int newLane = currentLane + direction; 
 
-    void ChangeLane(int direction) { 
-        currentLane = Mathf.Clamp(currentLane + direction, 0, 2); 
-        UpdateTargetPosition(); 
+        if (newLane < 0 || newLane > 2) return; 
+            currentLane = newLane; 
+
+        UpdateTargetPosition();
     }
 
     void UpdateTargetPosition() { 

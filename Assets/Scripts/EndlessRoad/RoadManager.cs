@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public GameObject roadTilePrefab; 
+    public GameObject[] roadTilePrefabs; 
     public int numberOfTiles = 5; 
     public float tileLength = 30f;
     
     private List<GameObject> activeTiles = new List<GameObject>(); 
     public Transform player; 
+
     void Start() 
     {
         for (int i = 0; i < numberOfTiles; i++) 
@@ -26,9 +27,11 @@ public class NewBehaviourScript : MonoBehaviour
         } 
     }
     void SpawnTile(float zPosition) 
-    { 
-        GameObject tile = Instantiate(roadTilePrefab, new Vector3(0, 0, zPosition), Quaternion.identity); 
-        activeTiles.Add(tile); 
+    {
+        GameObject prefab = roadTilePrefabs[Random.Range(0, roadTilePrefabs.Length)]; 
+
+        GameObject tile = Instantiate(prefab, new Vector3(0, 0, zPosition), Quaternion.identity); 
+        activeTiles.Add(tile);
     } 
     
     void DeleteTile() 
