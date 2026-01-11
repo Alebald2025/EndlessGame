@@ -23,4 +23,13 @@ public class PlayerJump : MonoBehaviour
     { 
         if (collision.collider.CompareTag("Ground")) isGrounded = true; 
     }
+
+    public void TryJump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
 }

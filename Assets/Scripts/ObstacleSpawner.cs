@@ -19,10 +19,19 @@ public class ObstacleSpawner : MonoBehaviour
         } 
     }
     void SpawnObstacle() 
-    { 
-        int lane = Random.Range(0, 3); 
-        float laneX = (lane - 1) * 2f; 
-        Vector3 spawnPos = new Vector3(laneX, 0.513f, transform.position.z + spawnDistance); 
-        Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], spawnPos, Quaternion.identity); 
+    {
+        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+
+        float xPos = 0f;
+
+        if (!prefab.CompareTag("FullLaneObstacle")) 
+        { 
+            int lane = Random.Range(0, 3); 
+            xPos = (lane - 1) * 2f; 
+        }
+
+        Vector3 spawnPos = new Vector3(xPos, 0, transform.position.z + spawnDistance); 
+
+        Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 }

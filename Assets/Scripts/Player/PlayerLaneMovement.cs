@@ -31,12 +31,13 @@ public class PlayerLaneController : MonoBehaviour {
         ); 
     }
     
-    void ChangeLane(int direction) {
+    public void ChangeLane(int direction) {
         int newLane = currentLane + direction; 
 
-        if (newLane < 0 || newLane > 2) return; 
-            currentLane = newLane; 
-
+        if (newLane < 0 || newLane > 2) 
+            return; 
+  
+        currentLane = newLane;
         UpdateTargetPosition();
     }
 

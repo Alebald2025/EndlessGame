@@ -25,4 +25,10 @@ public class PlayerCrouch : MonoBehaviour
         transform.localScale = originalScale; 
         isCrouching = false; 
     }
+
+    public void TryCrouch()
+    {
+        if (!isCrouching)
+            StartCoroutine(CrouchRoutine());
+    }
 }
