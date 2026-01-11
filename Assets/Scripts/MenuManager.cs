@@ -5,26 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void StartGame() { 
+    public void StartGame() {
+        AudioManager.Instance.PauseMusic();
         SceneManager.LoadScene("Game"); 
     }
 
     public void ExitGame()
     {
         Application.Quit(); 
-        Debug.Log("Saliendo del juego..."); // Solo para ver que funciona en el editor
+        Debug.Log("Saliendo del juego..."); 
     }
 
 }

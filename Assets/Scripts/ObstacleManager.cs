@@ -13,6 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
     public float spawnSpacing = 10f;
 
     private List<GameObject> activeObstacles = new List<GameObject>();
+    private List<GameObject> activeCoins = new List<GameObject>();
 
     void Update()
     {
@@ -23,6 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
         }
 
         CleanupObstacles();
+        CleanUpCoins();
 
     }
 
@@ -88,6 +90,24 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
+    void CleanUpCoins()
+    {
+        for (int i = activeCoins.Count - 1; i >= 0; i--)
+        {
+            if (activeCoins[i] == null)
+            {
+                activeCoins.RemoveAt(i);
+                continue;
+            }
+
+            if (activeCoins[i].transform.position.z < player.position.z - 5f)
+            {
+                Destroy(activeCoins[i]);
+                activeCoins.RemoveAt(i);
+            }
+        }
+    }
+
     void SpawnCoins(float zPos)
     {
         List<int> freeLanes = LaneScanner.GetFreeLanes(zPos);
@@ -99,8 +119,8 @@ public class ObstacleSpawner : MonoBehaviour
 
         float xPos = (lane - 1) * 2f;
 
-        Instantiate(coinPrefab, new Vector3(xPos, 1f, zPos), Quaternion.identity);
-
+        GameObject coin = Instantiate(coinPrefab, new Vector3(xPos, 1f, zPos), Quaternion.identity);
+        activeCoins.Add(coin);
     }
 
 }
