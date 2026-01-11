@@ -11,7 +11,6 @@ public class MobileInput : MonoBehaviour
     
     public PlayerLaneController laneMovement; 
     public PlayerJump jump; 
-    public PlayerCrouch crouch;
 
     void Update()
     {
@@ -40,10 +39,7 @@ public class MobileInput : MonoBehaviour
                 else if (Mathf.Abs(delta.y) > swipeThreshold) 
                 { 
                     if (delta.y > 0) 
-                        jump.TryJump(); 
-                    else 
-                        crouch.TryCrouch(); 
-                        
+                        jump.TryJump();                        
                     isSwiping = false; 
                 } 
             } 

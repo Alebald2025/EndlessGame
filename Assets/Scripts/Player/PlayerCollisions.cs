@@ -20,10 +20,10 @@ public class PlayerCollisions : MonoBehaviour
         if (other.CompareTag("JumpObstacle") && jump.isGrounded) 
         { 
             Debug.Log("Debías saltar → Game Over"); 
-        } 
-        if (other.CompareTag("CrouchObstacle") && !crouch.isCrouching) 
-        { 
-            Debug.Log("Debías agacharte → Game Over"); 
-        } 
+        }
+        if (other.CompareTag("JumpObstacle"))
+        {
+            Debug.Log("Game Over");
+        }
     }
 }

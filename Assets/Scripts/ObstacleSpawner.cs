@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         float xPos = 0f;
 
-        if (!prefab.CompareTag("FullLaneObstacle")) 
+        if (!prefab.CompareTag("JumpObstacle")) 
         { 
             int lane = Random.Range(0, 3); 
             xPos = (lane - 1) * 2f; 
